@@ -1,12 +1,13 @@
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { DbSettings } from './settigns/db.settings';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { SigninModule } from './signin/signin.module';
 
 @Module({
   imports: [
-    DbSettings.postgreConnection(),
+    TypeOrmModule.forRoot(),
+    SigninModule,
   ],
   controllers: [AppController],
   providers: [AppService],
